@@ -1,0 +1,15 @@
+import math
+input("Привет! I do addition for you, yes? ")
+print("Too late, I do anyway!")
+add_1 = input("Give me number: ")
+add_2 = input("One more, пожалуйста: ")
+float(add_1)
+float(add_2)
+add = sum([add_1, add_2])
+print("Addition of "+add_1+" and "+add_2+" is "+add+".")
+times_1 = input("Now I do multiplication of 3 numbers! Give me first one: ")
+times_2 = input("Another: ")
+times_3 = input("Last one, пожалуйста: ")
+times = times_1*times_2*times_3
+print("Your answer of multiplication is "+times+".")
+print("PROGRAM IS END")
