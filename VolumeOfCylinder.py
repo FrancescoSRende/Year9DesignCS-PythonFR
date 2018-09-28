@@ -29,7 +29,7 @@ lab_h.pack()
 ent_h = tk.Entry(root)
 ent_h.pack()
 
-button = tk.Button(root, text="Calculate", command=submit)
+button = tk.Button(root, text="Calculate", command=submit, background="red")
 button.pack()
 
 output = tk.Text(root, width=50, height=10, borderwidth=2, relief=tk.GROOVE)
