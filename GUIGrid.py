@@ -2,7 +2,7 @@ import tkinter as tk
 root = tk.Tk()
 
 label = tk.Label(root, text = "Enter a number: ")
-lab.grid(row = 0, column = 0)
+label.grid(row = 0, column = 0)
 
 entry = tk.Entry(root)
 entry.grid(row = 1, column = 0)
