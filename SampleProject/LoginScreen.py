@@ -3,6 +3,11 @@ from tkinter import ttk
 import os
 import webbrowser
 
+username = ""
+password = ""
+attemptUN = ""
+attemptPW = ""
+
 def account():
 
 	username = entSetUN.get()
