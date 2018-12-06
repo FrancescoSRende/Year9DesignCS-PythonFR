@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 
 
+
+
 h_object = 0
 h_image = 0
 scale_ratio = 0
@@ -14,6 +16,8 @@ oper = "+"
 num_1 = 0
 num_2 = 0
 answer = 0
+
+
 
 def calc_scale():
 
@@ -47,34 +51,63 @@ def convert():
 	units_2 = optionVar2.get()
 	meas_1 = float(ent_var1.get())
 	meas_2 = float(ent_var2.get())
+
 	if units_1 == units_2:
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "Already in same units.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1)+" "+units_1+" and "+str(meas_2)+" "+units_2+".\n")
+		f.close()
+
 	elif units_1 == "cm" and units_2 == "mm":
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "The first measurement is "+str(meas_1 * 10)+" mm and the second measurement is "+str(meas_2)+" mm.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1 * 10)+" mm and "+str(meas_2)+" mm.\n")
+		f.close()
+
 	elif units_1 == "cm" and units_2 == "μm":
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "The first measurement is "+str(meas_1 * 10000)+" μm and the second measurement is "+str(meas_2)+" μm.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1 * 10000)+" μm and "+str(meas_2)+" μm.\n")
+		f.close()
+
 	elif units_1 == "mm" and units_2 == "cm":
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "The first measurement is "+str(meas_1)+" mm and the second measurement is "+str(meas_2 * 10)+" mm.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1)+" mm and "+str(meas_2 * 10)+" mm.\n")
+		f.close()
+
 	elif units_1 == "mm" and units_2 == "μm":
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "The first measurement is "+str(meas_1 * 1000)+" μm and the second measurement is "+str(meas_2)+" μm.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1 * 1000)+" μm and "+str(meas_2)+" μm.\n")
+		f.close()
+
 	elif units_1 == "μm" and units_2 == "cm":
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "The first measurement is "+str(meas_1)+" μm and the second measurement is "+str(meas_2 * 10000)+" μm.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1)+" μm and "+str(meas_2 * 10000)+" μm.\n")
+		f.close()
+
 	elif units_1 == "μm" and units_2 == "mm":
 		output2eq1.config(state = "normal")
 		output2eq1.insert(tk.INSERT, "The first measurement is "+str(meas_1)+" μm and the second measurement is "+str(meas_2 * 1000)+" μm.\n")
 		output2eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write("Units are: "+str(meas_1)+" μm and "+str(meas_2 * 1000)+" μm.\n")
+		f.close()
+
 
 def change_3(*args):
 	oper = optionVar3.get()
@@ -83,26 +116,52 @@ def calculate():
 	oper = optionVar3.get()
 	num_1 = float(ent_num1.get())
 	num_2 = float(ent_num2.get())
+
 	if oper == "+":
 		answer = num_1 + num_2
 		output3eq1.config(state = "normal")
 		output3eq1.insert(tk.INSERT, str(num_1)+" "+str(oper)+" "+str(num_2)+" = "+str(answer)+".\n")
 		output3eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write(str(num_1)+" + "+str(num_2)+" = "+str(answer)+".\n")
+		f.close()
+
 	elif oper == "-":
 		answer = num_1 - num_2
 		output3eq1.config(state = "normal")
 		output3eq1.insert(tk.INSERT, str(num_1)+" "+str(oper)+" "+str(num_2)+" = "+str(answer)+".\n")
 		output3eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write(str(num_1)+" - "+str(num_2)+" = "+str(answer)+".\n")
+		f.close()
+
 	elif oper == "*":
 		answer = num_1 * num_2
 		output3eq1.config(state = "normal")
 		output3eq1.insert(tk.INSERT, str(num_1)+" "+str(oper)+" "+str(num_2)+" = "+str(answer)+".\n")
 		output3eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write(str(num_1)+" * "+str(num_2)+" = "+str(answer)+".\n")
+		f.close()
+
 	elif oper == "/":
 		answer = num_1 / num_2
 		output3eq1.config(state = "normal")
 		output3eq1.insert(tk.INSERT, str(num_1)+" "+str(oper)+" "+str(num_2)+" = "+str(answer)+".\n")
 		output3eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write(str(num_1)+" / "+str(num_2)+" = "+str(answer)+".\n")
+		f.close()
+
+	elif oper == "^":
+		answer = num_1 ** num_2
+		output3eq1.config(state = "normal")
+		output3eq1.insert(tk.INSERT, str(num_1)+" "+str(oper)+" "+str(num_2)+" = "+str(answer)+".\n")
+		output3eq1.config(state = "disabled")
+		f = open("FinalProj.txt", "a")
+		f.write(str(num_1)+" ^ "+str(num_2)+" = "+str(answer)+".\n")
+		f.close()
+
 
 
 
@@ -185,9 +244,9 @@ lab2var4 = tk.Label(tab2, text = "Input Second Unit")
 lab2var4.grid(row = 3, column = 0, sticky = "NESW")
 
 optionList2 = ["cm", "mm", "μm"]
-optionVar2 = tk.StringVar(tab2) #This is keeping track of what the drop down is set to.  
-optionVar2.set(optionList2[0]) #This initalizes your variable 
-optionVar2.trace("w",change_1) #Runs the function change when we write to optionVar, which happens when we change the drop down
+optionVar2 = tk.StringVar(tab2)
+optionVar2.set(optionList2[0])
+optionVar2.trace("w",change_1)
 dropdown2 = tk.OptionMenu(tab2,optionVar2,optionList2[0],optionList2[1],optionList2[2])
 dropdown2.grid(row = 3, column = 1)
 
@@ -217,11 +276,11 @@ ent_num1.grid(row = 0, column = 1, sticky = "NESW")
 lab_oper = tk.Label(tab3, text = "Input Operation")
 lab_oper.grid(row = 1, column = 0, sticky = "NESW")
 
-optionList3 = ["+", "-", "*", "/"]
-optionVar3 = tk.StringVar(tab3) #This is keeping track of what the drop down is set to.  
-optionVar3.set(optionList3[0]) #This initalizes your variable 
-optionVar3.trace("w",change_3) #Runs the function change when we write to optionVar, which happens when we change the drop down
-dropdown3 = tk.OptionMenu(tab3,optionVar3,optionList3[0],optionList3[1],optionList3[2],optionList3[3])
+optionList3 = ["+", "-", "*", "/", "^"]
+optionVar3 = tk.StringVar(tab3)
+optionVar3.set(optionList3[0])
+optionVar3.trace("w",change_3)
+dropdown3 = tk.OptionMenu(tab3,optionVar3,optionList3[0],optionList3[1],optionList3[2],optionList3[3], optionList3[4])
 dropdown3.grid(row = 1, column = 1)
 
 lab_num2 = tk.Label(tab3, text = "Input Second Number")
