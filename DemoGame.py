@@ -120,92 +120,97 @@ class World():
 
 	def fight(self):
 
-		if random.randint(1,101) < self.yourACC:
-
-			chanceSoldier = random.randint(0,len(self.yourATK)-1) #Since chanceSoldier is only in this function no self needed
-
-			chanceEnemyDEF = random.randint(0,len(self.enemyDEF)-1)
-
-			if self.yourATK[chanceSoldier] > self.enemyDEF[chanceEnemyDEF]:
-				self.enemyHP = self.enemyHP - self.yourATK[chanceSoldier] + self.enemyDEF[chanceEnemyDEF]
-
-			else:
-				self.enemyStatsOutput.config(state = "normal")
-				self.enemyStatsOutput.insert(tk.INSERT, "Enemy blocked attack.\n")
-				self.enemyStatsOutput.config(state = "disabled")
-
-			if random.randint(1,101) < self.enemyACC:
-				chanceEnemy = random.randint(0,len(self.enemyATK)-1)
-				self.yourHP -= self.enemyATK[chanceEnemy]
-
-			else:
-				self.enemyStatsOutput.config(state = "normal")
-				self.enemyStatsOutput.insert(tk.INSERT, "Enemy missed.\n")
-				self.enemyStatsOutput.config(state = "disabled")
-
-			self.yourStatsOutput.config(state = "normal")
-			self.yourStatsOutput.delete(1.0,END)
-			self.yourStatsOutput.insert(tk.INSERT, "Your HP is now "+str(self.yourHP)+".\n")
-			self.yourStatsOutput.config(state = "disabled")
-
-			self.enemyStatsOutput.config(state = "normal")
-			self.enemyStatsOutput.delete(1.0,END)
-			self.enemyStatsOutput.insert(tk.INSERT, "Enemy HP is now "+str(self.enemyHP)+".\n")
-			self.enemyStatsOutput.config(state = "disabled")
-
-			if self.yourHP <= 0:
-				self.yourStatsOutput.config(state = "normal")
-				self.yourStatsOutput.delete(1.0,END)
-				self.yourStatsOutput.insert(tk.INSERT, "You are dead.\n")
-				self.yourStatsOutput.config(state = "disabled")
-
-			if self.enemyHP <= 0:
-				self.enemyStatsOutput.config(state = "normal")
-				self.enemyStatsOutput.delete(1.0,END)
-				self.enemyStatsOutput.insert(tk.INSERT, "Enemy is dead.\n")
-				self.enemyStatsOutput.config(state = "disabled")
-
-				self.yourStatsOutput.config(state = "normal")
-				self.yourStatsOutput.delete(1.0,END)
-				self.yourStatsOutput.insert(tk.INSERT, "You win.\n")
-				self.yourStatsOutput.config(state = "disabled")
-
-		else:
-			self.yourStatsOutput.config(state = "normal")
-			self.yourStatsOutput.insert(tk.INSERT, "You missed.\n")
-			self.yourStatsOutput.config(state = "disabled")
-
-
-
-	def defend(self):
-		
-		chanceSoldierDEF = random.randint(0,len(self.yourDEF)-1)
-
-		chanceEnemy = random.randint(0,len(self.enemyATK)-1)
-
-		if random.randint(1,101) > self.enemyACC:
-			self.enemyStatsOutput.config(state = "normal")
-			self.enemyStatsOutput.insert(tk.INSERT, "Enemy missed.\n")
-			self.enemyStatsOutput.config(state = "disabled")
-
-		else:
-			if self.enemyATK[chanceEnemy] > self.yourDEF[chanceSoldierDEF]:
-				self.yourHP = self.yourHP - self.enemyATK[chanceEnemy] + self.yourDEF[chanceSoldierDEF]
-
-			else:
-				self.yourStatsOutput.config(state = "normal")
-				self.yourStatsOutput.insert(tk.INSERT, "You blocked attack.\n")
-				self.yourStatsOutput.config(state = "disabled")
-
-		self.yourStatsOutput.config(state = "normal")
-		self.yourStatsOutput.delete(1.0,END)
-		self.yourStatsOutput.insert(tk.INSERT, "Your HP is now "+str(self.yourHP)+".\n")
-		self.yourStatsOutput.config(state = "disabled")
-
 		if self.yourHP <= 0:
 			self.yourStatsOutput.config(state = "normal")
 			self.yourStatsOutput.delete(1.0,END)
 			self.yourStatsOutput.insert(tk.INSERT, "You are dead.\n")
+			self.yourStatsOutput.config(state = "disabled")
+
+		else:
+
+			if random.randint(1,101) < self.yourACC:
+
+				chanceSoldier = random.randint(0,len(self.yourATK)-1) #Since chanceSoldier is only in this function no self needed
+
+				chanceEnemyDEF = random.randint(0,len(self.enemyDEF)-1)
+
+				if self.yourATK[chanceSoldier] > self.enemyDEF[chanceEnemyDEF]:
+					self.enemyHP = self.enemyHP - self.yourATK[chanceSoldier] + self.enemyDEF[chanceEnemyDEF]
+
+				else:
+					self.enemyStatsOutput.config(state = "normal")
+					self.enemyStatsOutput.insert(tk.INSERT, "Enemy blocked attack.\n")
+					self.enemyStatsOutput.config(state = "disabled")
+
+				if random.randint(1,101) < self.enemyACC:
+					chanceEnemy = random.randint(0,len(self.enemyATK)-1)
+					self.yourHP -= self.enemyATK[chanceEnemy]
+
+				else:
+					self.enemyStatsOutput.config(state = "normal")
+					self.enemyStatsOutput.insert(tk.INSERT, "Enemy missed.\n")
+					self.enemyStatsOutput.config(state = "disabled")
+
+				self.yourStatsOutput.config(state = "normal")
+				self.yourStatsOutput.delete(1.0,END)
+				self.yourStatsOutput.insert(tk.INSERT, "Your HP is now "+str(self.yourHP)+".\n")
+				self.yourStatsOutput.config(state = "disabled")
+
+				self.enemyStatsOutput.config(state = "normal")
+				self.enemyStatsOutput.delete(1.0,END)
+				self.enemyStatsOutput.insert(tk.INSERT, "Enemy HP is now "+str(self.enemyHP)+".\n")
+				self.enemyStatsOutput.config(state = "disabled")
+
+				if self.enemyHP <= 0:
+					self.enemyStatsOutput.config(state = "normal")
+					self.enemyStatsOutput.delete(1.0,END)
+					self.enemyStatsOutput.insert(tk.INSERT, "Enemy is dead.\n")
+					self.enemyStatsOutput.config(state = "disabled")
+
+					self.yourStatsOutput.config(state = "normal")
+					self.yourStatsOutput.delete(1.0,END)
+					self.yourStatsOutput.insert(tk.INSERT, "You win.\n")
+					self.yourStatsOutput.config(state = "disabled")
+
+			else:
+				self.yourStatsOutput.config(state = "normal")
+				self.yourStatsOutput.insert(tk.INSERT, "You missed.\n")
+				self.yourStatsOutput.config(state = "disabled")
+
+
+
+	def defend(self):
+
+		if self.yourHP <= 0:
+
+			self.yourStatsOutput.config(state = "normal")
+			self.yourStatsOutput.delete(1.0,END)
+			self.yourStatsOutput.insert(tk.INSERT, "You are dead.\n")
+			self.yourStatsOutput.config(state = "disabled")
+
+		else:
+		
+			chanceSoldierDEF = random.randint(0,len(self.yourDEF)-1)
+
+			chanceEnemy = random.randint(0,len(self.enemyATK)-1)
+
+			if random.randint(1,101) > self.enemyACC:
+				self.enemyStatsOutput.config(state = "normal")
+				self.enemyStatsOutput.insert(tk.INSERT, "Enemy missed.\n")
+				self.enemyStatsOutput.config(state = "disabled")
+
+			else:
+				if self.enemyATK[chanceEnemy] > self.yourDEF[chanceSoldierDEF]:
+					self.yourHP = self.yourHP - self.enemyATK[chanceEnemy] + self.yourDEF[chanceSoldierDEF]
+
+				else:
+					self.yourStatsOutput.config(state = "normal")
+					self.yourStatsOutput.insert(tk.INSERT, "You blocked attack.\n")
+					self.yourStatsOutput.config(state = "disabled")
+
+			self.yourStatsOutput.config(state = "normal")
+			self.yourStatsOutput.delete(1.0,END)
+			self.yourStatsOutput.insert(tk.INSERT, "Your HP is now "+str(self.yourHP)+".\n")
 			self.yourStatsOutput.config(state = "disabled")
 
 
